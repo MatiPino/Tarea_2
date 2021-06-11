@@ -6,7 +6,8 @@ class Producto(models.Model):
     nombre_producto = models.CharField('Nombre del producto', max_length=50, blank=False, null= False)
     precio_producto = models.SmallIntegerField('Precio del producto', blank=False, null=False)
     codigo_barra = models.CharField('Codigo de barra', blank=False, null=False, max_length=150)
-
+    def __str__(self):
+        return self.nombre_producto
     # Uno a Uno
     # on_delete CASCADE = Me llevo a mi y a todos conmigo
     # on_delete RESTRICT = Protege el borrado si hay relaciones usadas

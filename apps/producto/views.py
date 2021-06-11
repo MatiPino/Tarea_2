@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from .models import Producto, Categoria
 from .forms import FormularioProducto
 
@@ -31,5 +31,19 @@ def eliminar(request, producto_id):
         productoAgregado.delete()
     except:
         pass
-    return redirect('index')        
-# Create your views here.
+    return redirect('index')
+
+def modificar_producto(request, producto_id): 
+    producto = get_object_or_404(Producto, id=producto_id)
+    data = {
+        'titulo': 'Editar Producto',
+        'formulario': FormularioProducto(instance=producto)
+    }
+    if request.method == 'POST':
+        formulario = FormularioProducto(data=request.POST, instance=producto, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="index")
+        data["formulario"] = formulario    
+    
+    return render(request, 'modificar.html', data)

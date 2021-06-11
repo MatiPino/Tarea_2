@@ -33,6 +33,11 @@ Productos
       <i class="fas fa-trash-alt"></i>
       </a>
       </td> 
+      <td>
+          <a href="{% url 'modificar_producto' producto.id %}">
+          <i class="fas fa-pen"></i>
+          </a>
+      </td>
     </tr>
   {% endfor %}    
   </tbody>

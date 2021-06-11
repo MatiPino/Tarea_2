@@ -19,7 +19,7 @@ class FormularioProducto(forms.ModelForm):
             'precio_producto': forms.TextInput(attrs={
                 'class': 'precio form-control bg-secondary text-light',
                 'type': 'number',
-                'placeholder': 'Ingresa el precio del proucto'
+                'placeholder': 'Ingresa el precio del producto'
             }),
             'codigo_barra': forms.TextInput(attrs={
                 'class': 'codigo form-control bg-secondary text-light',
